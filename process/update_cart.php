@@ -1,0 +1,19 @@
+<?php
+session_start();
+    $id=$type="";
+    if(isset($_GET['id'])&&isset($_GET['type'])){
+        $id=$_GET['id'];
+        $type=$_GET['type'];
+    if($type=="giam"){
+        if($_SESSION['cart'][$id]['so_luong']>1){
+            $_SESSION['cart'][$id]['so_luong']--;
+        }else{
+            unset($_SESSION['cart'][$id]);
+        }
+    }
+    if($type=="tang"){
+        $_SESSION['cart'][$id]['so_luong']++;
+    }
+    header('location:../cart.php');
+    }
+ ?>
